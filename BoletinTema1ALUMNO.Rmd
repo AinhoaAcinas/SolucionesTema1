@@ -174,8 +174,13 @@ Animals2[a_solo,]#caracteristicas de los animales que estan en Animals2 solo
 2.  La funcion **qqPlot** del paquete **car** puede ser utilizada para determinar gráficamente si una serie de puntos siguen una distribución de datos Gaussiana. Si las muestras están dentro de las líneas discontinuas podemos indicar que siguen una distribución Gaussiana con un 95 % de confianza. Utilizando esta función representa el logaritmo neperiano (**log**) del peso del cerebro (**brain weigths**) del registro de datos **mammals** del paquete **MASS** y conjunto de datos **Animals2** de la librería **robustbase**. ¿Presentan el mismo comportamiento ?.¿Podríamos decir que siguen una distribución Gaussiana ?
 
 ```{r}
+#Para el registro de datos mammals:
+qqPlot(log(mammals$brain))
 
+#Para el registro de datos Animals2:
+qqPlot(log(Animals2$brain))
 
+#Los dos presentan un comportamiento muy parecido y se podria decir que ambos siguen una distribución Gaussiana ya que las muestras en ambas estan dentro de las lineas discontinuas.
 ```
 
 3.  La función **library** sin argumentos abre una ventana y muestra las librerías que han sido instaladas.
