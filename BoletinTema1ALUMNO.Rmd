@@ -213,30 +213,30 @@ length(libReturn$results[,1]) #Tengo 211 librerias instaladas en mi caso
 ```{r}
 
 
+#A)
+#1. Numero de registros:
+dim(cabbages)[1]
+#2. Numero de variables:
+dim(cabbages)[2]
+#3. Tipos de variables:
+str(cabbages)
 
+#B)
+colSums(sapply(cabbages, is.na))
 
+#C)
+#1. Numero de registros:
+dim(Chile)[1]
+#2. Numero de variables:
+dim(Chile)[2]
+#3. Tipos de variables:
+str(Chile)
+#Numero de valores perdidos para cada una de las variables
+colSums(sapply(Chile, is.na))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#D)
+summary(cabbages)
+summary(Chile)
 
 ```
 
