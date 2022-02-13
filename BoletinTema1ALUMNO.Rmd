@@ -268,7 +268,7 @@ hist(x = cabbages$VitC[cabbages$Cult == "c52"])
 #Diagrama de dispersión global.
 plot(whiteside$Temp, whiteside$Gas)
 #Diagrama de dispersión etiquetando según un factor.
-plot(whiteside$Temp, whiteside$Gas, pch=c(6,16)[whiteside\$Insul])
+plot(whiteside$Temp, whiteside$Gas, pch=c(6,16)[whiteside$])
 legend(x="topright",legend=c("Insul = Before","Insul = After"), pch=c(6,16))
 # Planteamos 2 modelos lineales, uno para los datos de cada factor
 Model1 <- lm(Gas ~ Temp, data = whiteside, subset = which(Insul == "Before"))
@@ -282,15 +282,6 @@ abline(Model2)
 
 
 
-
-
-
-
-
-
-
-
-
 ```
 
 a.  Utiliza un procedimiento análogo para determinar si se aprecia una relación lineal entre los niveles de vitamina C, **VitC** en función del peso de la calabaza, **HeadWt**, en el conjunto de datos **cabbages**.
@@ -298,27 +289,35 @@ b.  Repite el apartado anterior, pero obteniendo un modelo para cada una de las 
 
 ```{r}
 
+#A)
+#Diagrama de dispersión global.
+plot(cabbages$HeadWt, cabbages$VitC)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+#B)
+#Diagrama de dispersión etiquetando según un factor.
+plot(cabbages$HeadWt, cabbages$VitC, pch=c(6,16)[cabbages$HeadWt])
+# Planteamos 2 modelos lineales, uno para los datos de cada factor
+Model1 <- lm(VitC ~ HeadWt, data = cabbages, subset = which(Cult == "c39"))
+Model2 <- lm(VitC ~ HeadWt, data = cabbages, subset = which(Cult == "c52"))
+# Representamos las rectas correspondientes a cada modelo lineal
+abline(Model1, lty=2)
+abline(Model2)
 
 ```
 
 c.  Usa **summary** con cada uno de los modelos obtenidos y observa **Coefficients**. Dado que hemos planteado un modelo $y=mx+n$, donde $y=VitC$ y $x=HeadWt$. La función **lm** nos permite obtener **(Intercept)**; **n** y la pendiente **HeadWt**; **m** (además de otros parámetros adicionales que evalúan la caracterísiticas del modelo). Observa que en todos los casos, la pendiene es negativa indicando que las calabazas de más peso contienen menos vitamina C. No te preocupes por el resto de parámetros del modelo, por el momento.
 
 ```{r}
+#Observamos los coeficientes del modelo 1
+summary(Model1$coefficients)
 
+#Observamos los coeficientes del modelo 2
+summary(Model2$coefficients)
+
+lm(Model1) #Obsercamos que la pendiente del Modelo 1 es negativa
+
+lm(Model2) #Obsercamos que la pendiente del Modelo 2 es negativa
 
 
 ```
